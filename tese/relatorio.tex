@@ -1,0 +1,154 @@
+\documentclass[10pt]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage[portuguese]{babel}
+\usepackage{fontenc}
+
+\usepackage[style=abnt-numeric, backend=biber, sorting=none]{biblatex}
+\addbibresource{referencias.bib}
+\DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
+
+% --- Classificação da Bibliografia ---
+
+% 1. BASICA
+\DeclareBibliographyCategory{basica}
+\addtocategory{basica}{
+    McKeown:OpenFlow,
+    Kreutz:Comprehensive,
+    Astuto:SDNSurvey,
+    ONF_OpenFlow_1.5.1,
+    Kurose:Redes,
+    Tanenbaum:Redes
+}
+
+% 2. HARDWARE
+\DeclareBibliographyCategory{hardware}
+\addtocategory{hardware}{
+    Forencich:Corundum,
+    Zhong:Lightning,
+    Saleh:AnalogINC,
+    Mashreghi:PrismParser,
+    10.1145/1477942.1477944
+}
+
+% 3. TENDENCIAS
+\DeclareBibliographyCategory{tendencias}
+\addtocategory{tendencias}{
+    Bosshart:P4,
+    Liatifis:P4Survey,
+    Janabi:Security2024,
+    Wang:TrustworthyEI,
+    9972067
+}
+
+% 4. CONTEXTO
+\DeclareBibliographyCategory{contexto}
+\addtocategory{contexto}{
+    Feamster:RoadToSDN,
+    Casado:Ethane,
+    Rothenberg:OpenFlow,
+    Rothenberg:MininetWiFi,
+    Guedes:SBRC2012,
+    Das:10,
+    6587999,
+    Jammal:SDNChallenges,
+    Kirkpatrick2013,
+    IPJ_16_1
+}
+
+\title{Proposta de Referencial Teórico: SDN e Arquiteturas Pós-Digitais}
+\author{
+    \IEEEauthorblockN{Nico I. G. Ramos}
+    \IEEEauthorblockA{
+        Orientando - GRR20210574\\
+    }
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Objetivo}
+Este documento apresenta a seleção bibliográfica para a fundamentação teórica do Trabalho de Conclusão de Curso. A bibliografia está organizada em quatro categorias principais: (i) obras canônicas sobre SDN e OpenFlow; (ii) referências sobre aceleração de hardware e computação pós-digital; (iii) estudos sobre a evolução do paradigma, incluindo P4 e tendências emergentes; e (iv) contextualização histórica e regional do tema.
+
+\section{Bibliografia Básica (Obras Canônicas)}
+A seguir, detalha-se a justificativa acadêmica para a inclusão das referências estruturantes que definem o paradigma SDN e o protocolo OpenFlow.
+
+\begin{itemize}
+    \item \cite{McKeown:OpenFlow} \textbf{O Documento Fundador:} \\
+    O trabalho seminal de McKeown et al. (2008) introduziu o OpenFlow como solução para a "ossificação" da Internet. Esta referência será a base para descrever a separação fundamental entre os planos de controle e dados.
+    
+    \item \cite{Kreutz:Comprehensive} \textbf{Survey de Referência:} \\
+    A revisão extensiva de Kreutz et al. (2015) é essencial para discutir os requisitos de escalabilidade, confiabilidade e segurança na arquitetura SDN. A obra consolida o estado da arte da primeira década do paradigma.
+    
+    \item \cite{Kurose:Redes, Tanenbaum:Redes} \textbf{Livros Didáticos:} \\
+    As obras de Kurose e Tanenbaum fornecem as bases teóricas de redes de computadores. Serão utilizadas pontualmente para garantir o rigor terminológico e a contextualização acadêmica dos conceitos de comutação e roteamento.
+    
+    \item \cite{Astuto:SDNSurvey, ONF_OpenFlow_1.5.1} \textbf{Definições e Especificações:} \\
+    O \textit{survey} de Astuto et al. e a especificação oficial da ONF servirão como fontes primárias para a taxonomia padrão e para os detalhes técnicos das tabelas de fluxo e mensagens do protocolo.
+\end{itemize}
+
+\section{Aceleração de Hardware e Computação Pós-Digital}
+Esta seção constitui o foco da atualização bibliográfica, selecionando obras fundamentais para o desenvolvimento de planos de dados de alto desempenho baseados em hardware reconfigurável e físico.
+
+\begin{itemize}
+    \item \cite{Forencich:Corundum} \textbf{FPGA e Open Hardware (Corundum):} \\
+    O trabalho de Forencich et al. (2020) apresenta o \textit{Corundum}, uma NIC baseada em FPGA de código aberto operando a 100 Gbps. Esta obra será a referência central para a implementação de SDN em hardware moderno, demonstrando a superação das limitações das primeiras gerações (como o NetFPGA).
+    
+    \item \cite{Saleh:AnalogINC} \textbf{Computação Analógica na Rede:} \\
+    Saleh et al. (2024) propõem o uso de \textbf{Memristores} e memórias associativas probabilísticas (pCAM) para processamento de pacotes no domínio analógico. Esta referência será utilizada para discutir a redução do consumo energético e as arquiteturas pós-digitais.
+    
+    \item \cite{Zhong:Lightning} \textbf{SmartNICs Fotônicas:} \\
+    O projeto \textit{Lightning} (Zhong et al., 2023) demonstra uma SmartNIC híbrida que utiliza computação fotônica para inferência em tempo real. A obra exemplifica como eliminar gargalos eletrônicos no processamento de pacotes.
+
+    \item \cite{Mashreghi:PrismParser} \textbf{P4 em FPGA:} \\
+    Mashreghi-Moghadam et al. (2024) detalham arquiteturas eficientes para implementar \textit{parsers} P4 em FPGAs. Este trabalho é essencial para unir a flexibilidade da programação SDN com a velocidade de execução do hardware dedicado.
+\end{itemize}
+
+\section{Evolução do Paradigma (P4 e Tendências)}
+Referências selecionadas para cobrir a programabilidade avançada do plano de dados e o estado da arte em segurança e gerenciamento.
+
+\begin{itemize}
+    \item \cite{Bosshart:P4} \textbf{Linguagem P4:} \\
+    A proposta original de Bosshart et al. (2014) define os processadores de pacotes independentes de protocolo. Esta obra será utilizada para explicar a transição do modelo OpenFlow fixo para o modelo programável P4.
+    
+    \item \cite{Liatifis:P4Survey, Janabi:Security2024, Wang:TrustworthyEI} \textbf{Surveys Recentes e Segurança:} \\
+    As revisões de Liatifis, Janabi e Wang (2023-2025) mapeiam a integração de SDN com IA e redes 6G. Serão utilizadas para demonstrar a atualidade da pesquisa e os desafios emergentes de segurança.
+
+    \item \cite{9972067} \textbf{Gerenciamento de Filas em P4:} \\
+    Com o avanço da programabilidade no plano de dados, novas aplicações tornaram-se viáveis diretamente nos switches. Kudure et al. (2022) exploram a implementação de algoritmos de Gerenciamento Ativo de Filas (AQM), como o CoDel, inteiramente em hardware P4, evidenciando a granularidade de controle atual.
+\end{itemize}
+
+\section{Contextualização Histórica e Regional}
+Obras que situam o SDN na história intelectual das redes, destacam a produção científica brasileira e analisam os desafios de adoção.
+
+\begin{itemize}
+    \item \cite{Feamster:RoadToSDN} \textbf{História Intelectual:} \\
+    Feamster et al. analisam a evolução das "Redes Ativas" até o SDN. Esta obra será utilizada na introdução para traçar a linha do tempo das tecnologias de gerenciamento de rede.
+    
+    \item \cite{Guedes:SBRC2012, Rothenberg:MininetWiFi} \textbf{Cenário Brasileiro:} \\
+    Os trabalhos do SBRC e o desenvolvimento do Mininet-WiFi por Rothenberg et al. são fundamentais para contextualizar a contribuição nacional e descrever as ferramentas de emulação adotadas.
+    
+    \item \cite{Casado:Ethane, Rothenberg:OpenFlow} \textbf{Precursores e Motivação:} \\
+    O projeto \textit{Ethane} (Casado et al., 2007) e a análise de Rothenberg (2013) justificam as motivações originais para a quebra de paradigma nas redes corporativas e acadêmicas.
+    
+    \item \cite{Jammal:SDNChallenges, Kirkpatrick2013, IPJ_16_1, 6587999} \textbf{Consolidação e Desafios:} \\
+    Publicações seminais, como as apresentadas no \textit{Internet Protocol Journal} e por Kirkpatrick, destacam como o SDN alterou o paradigma de gerenciamento. A \textit{Open Networking Foundation} (ONF) reforçou essa visão estabelecendo padrões, enquanto Jammal et al. detalham os desafios de pesquisa que persistem na implementação dessas redes.
+
+    \item \cite{Das:10} \textbf{Arquiteturas Unificadas:} \\
+    Das et al. propuseram, ainda nos estágios iniciais, uma arquitetura de controle unificado capaz de gerenciar tanto redes de pacotes quanto de circuitos, demonstrando a flexibilidade inerente ao modelo SDN.
+    
+    \item \cite{10.1145/1477942.1477944} \textbf{Hardware Clássico:} \\
+    O trabalho original sobre NetFPGA (Naous et al., 2008) é mantido aqui como referência histórica, servindo de contraponto para demonstrar a evolução do hardware discutido na Seção III.
+\end{itemize}
+
+\section{Listagem de Referências}
+\nocite{*} 
+
+% Imprime as bibliografias separadas por categoria para organização visual
+\printbibliography[category=basica, title={Bibliografia Básica (Obras Canônicas)}]
+\printbibliography[category=hardware, title={Hardware Avançado: FPGA, Analógico e Fotônica}]
+\printbibliography[category=tendencias, title={Tendências: P4 e Evolução de Software}]
+\printbibliography[category=contexto, title={Contexto: Histórico e Regional}]
+
+\end{document}
